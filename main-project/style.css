@@ -1,0 +1,708 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --header-height: 3.5rem;
+
+  --black-color: hsl(220, 24%, 12%);
+  --black-color-light: #1c222e;
+  --black-color-lighten: hsl(220, 20%, 18%);
+  --white-color: #fff;
+  --body-color: hsl(220, 100%, 97%);
+
+
+  /* colors aq2 */
+  --signature-color: #3B613B;
+  --pattern-color: #DED2C1;
+
+  --normal-font-size: .95rem;
+  --font-semi-bold: 600;
+  --z-fixed: 100;
+
+  /*WIDTH BREAKPOINTS: */
+  --tablet-break: 992px;
+  --smartphone-break: 37.5em;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--pattern-color);
+  box-shadow: 0px 2px 16px hsla(220, 32%, 8%, .3);
+  z-index: var(--z-fixed);
+}
+
+.nav-menu i {
+  /*o que aparece no dropdown*/
+  color: var(--body-color);
+}
+
+.nav {
+  height: var(--header-height);
+}
+
+.nav-data {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  column-gap: .25rem;
+  font-weight: var(--font-semi-bold);
+  color: var(--white-color);
+}
+
+.nav-toggle {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.nav-burger,
+.nav-close {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.nav-close {
+  opacity: 0;
+}
+
+/* Menu mobile */
+@media screen and (max-width: 1118px) {
+  .nav-menu {
+    position: absolute;
+    left: 0;
+    top: 2.5rem;
+    width: 100%;
+    background-color: var(--black-color);
+    height: calc(100vh - 3.5rem);
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nav-list {
+    padding-top: 1rem;
+  }
+}
+
+.nav-link {
+  color: var(--black-color);
+  font-weight: var(--font-semi-bold);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color .3s;
+}
+
+.dropdown-item .nav-link i {
+  margin-left: 5px;
+  color: var(--signature-color);
+}
+
+.nav-link:hover {
+  background-color: var(--black-color-light);
+}
+
+.show-menu {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.show-icon .nav-burger {
+  opacity: 0;
+}
+
+.show-icon .nav-close {
+  opacity: 1;
+}
+
+/* Dropdown */
+.dropdown-item,
+.dropdown-subitem {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-arrow {
+  transition: transform .3s;
+}
+
+.dropdown-item:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-link,
+.dropdown-sublink {
+  padding: 1rem 1.25rem 1rem 2rem;
+  color: var(--white-color);
+  background-color: var(--black-color-light);
+  display: flex;
+  align-items: center;
+  column-gap: .5rem;
+  font-weight: var(--font-semi-bold);
+  transition: background-color .3s;
+}
+
+.dropdown-link:hover,
+.dropdown-sublink:hover {
+  background-color: var(--black-color);
+}
+
+.dropdown-menu,
+.dropdown-submenu {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s, top .3s, left .3s;
+}
+
+/* Desktop dropdown */
+@media screen and (min-width: 1118px) {
+  .nav {
+    height: calc(var(--header-height) + 1.5rem);
+    display: flex;
+    justify-content: space-evenly; /*evenly deixa os icones mais proximos e mais centralizados*/
+    align-items: center;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-list {
+    display: flex;
+    column-gap: 2rem;
+  }
+
+  .nav-link {
+    padding: 0;
+    background: none;
+  }
+
+  .nav-link:hover {
+    background: none;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--black-color);
+  }
+
+  .dropdown-submenu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: var(--black-color);
+  }
+
+  /* Mostrar menus */
+  .dropdown-item:hover>.dropdown-menu {
+    opacity: 1;
+    pointer-events: initial;
+  }
+
+  .dropdown-subitem:hover>.dropdown-submenu {
+    opacity: 1;
+    pointer-events: initial;
+  }
+}
+
+/*FINAL ADJUSTMENTS*/
+
+/* Container com espaçamento lateral */
+.container {
+  max-width: 1500px;
+  margin-inline: auto;
+  /* centraliza no desktop */
+  padding-inline: 2rem;
+  width: 100%;
+  /* afasta da borda em todas as telas */
+}
+
+/* Ícones do toggle sempre brancos */
+
+.nav-burger,
+.nav-close {
+  color: var(--white-color);
+}
+
+/* diminuindo espaçamento menor em telas pequenas*/
+@media screen and (max-width: 768px) {
+  .container {
+    padding-inline: 1rem;
+  }
+}
+
+.nav-logo img {
+  /*substituindo a imagem pelo site*/
+  display: block;
+  max-height: 50px;
+}
+
+
+
+/*---------------CSS DO HERO-----------*/
+.hero {
+   background: radial-gradient(circle, rgba(194, 194, 194, 1) 0%, rgba(212, 212, 212, 1) 50%, rgba(255, 255, 255, 1) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+.hero-mean {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem;
+  margin-top: 5rem;
+  gap: 2.5rem;
+  /*maior afastamento em relação a imagem. talvez aumentar pra 3*/
+}
+
+.hero-text,
+.hero-mean img {
+  flex: 1;
+  /*ambos ocupam apenas espaço restante*/
+}
+
+.hero-text span {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.hero-text h1 {
+  position: relative;
+  /*necessário para ativar a absoluta de after*/
+  /* display: inline-block; */
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  /* font-size: 3.5rem; ja tem essa propriedade no seletor com a span tbm*/
+  font-weight: 900;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+@keyframes fadeIn {
+  from {
+    width: 0%;
+  }
+  to { /*o total DA LINHA animação inserida no after)*/
+    width: 107%;
+  }
+}
+.hero-text h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  /*distância abaixo do texto*/
+  width: 107%;
+  /*maior que 1% faz a linha invadir a imagem*/
+  height: 3px;
+  left: 0;
+  background-color: var(--signature-color);
+  transition: all .375s;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.hero-text h2 {
+  /* position: relative; */
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+  /*cinza menos carregado*/
+  padding-left: 2rem;
+  /*afastando o texto do futuro traço*/
+}
+
+.hero-text span,
+.hero-text h1 {
+  font-size: 4rem;
+  margin-bottom: 30px;
+  font-weight: bolder;
+}
+
+.hero-text {
+  position: relative;
+  margin-bottom: 30px;
+  /* margin-top: 60px; */
+}
+
+.hero-mean img {
+  display: block;
+  max-height: 20rem;
+  max-width: 20rem;
+
+  border-radius: 30px;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 1.5rem 3rem;
+  border-radius: 30px;
+  text-decoration: none;
+  color: var(--signature-color);
+  background-color: var(--pattern-color);
+  margin-top: 1.5rem;
+}
+
+.hero-cta:hover {
+  transition: all .375s;
+  background-color: var(--signature-color);
+  color: var(--pattern-color);
+}
+
+/*RESPONSIVIDADE DO HERO (tablet = 992px/smartphone: 768x)*/
+@media screen and (max-width: 768px) {
+  .hero {
+    padding: 1rem;
+    padding-top: calc(var(--header-height) + 2rem);
+    width: 100%;
+  }
+  .hero-mean {
+    flex-direction: column; /*coloca tudo empilhado verticalmente */
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+  }
+  .hero-text {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .hero-text span { /*texto aq2*/
+    font-size: 2rem;
+  }
+  .hero-text h1::after { /*tirando a linha debaixo do texto*/
+    display: none !important;
+  }
+  .hero-text h2 {
+    font-size: 1rem;
+    padding-left: 0;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .hero-mean img {
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 20px;
+    margin: 1rem 0;
+  }
+  .hero-cta {
+    width: 100%;
+    max-width: 300px;
+    padding: 1.2rem 2rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1092px) { /*TABLET*/
+  .hero-mean {
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 2.5rem;
+  }
+  .hero-text h1, 
+  .hero-text span {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  .hero-text h2 {
+    font-size: 1rem;
+    padding-left: 0;
+    text-align: center;
+  }
+  .hero-mean img {
+    max-width: 300px;
+    max-height: 300px;
+  }
+  .hero-cta {
+    align-self: center;
+    width: 100%;
+    text-align: center;
+  }
+  .hero-text h1::after {
+    display: block;
+    width: 100%;
+  }
+}
+/*css da parte textual*/
+.desc-father {
+  background: #DED2C1;
+  background: linear-gradient(0deg, rgba(222, 210, 193, 1) 4%, rgba(217, 217, 217, 1) 100%);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+  gap: 100px;
+  padding: 5rem;
+  position: relative;
+}
+.bottom-text, .description {
+  background-color: var(--signature-color);
+  color: var(--white-color);
+  padding: 1rem;
+  box-shadow: rgba(0 , 0, 0, .8);
+  border-radius: 30px;
+  font-weight: bold;
+  letter-spacing: 1.3px;
+  /* animation: s; */
+}
+/* .left-text::after {
+  position: absolute;
+  content: "";
+  right: -50%; /*metade do gap de 100px do father
+  top: 0;
+  width: 1px;
+  background-color: var(--signature-color);
+} */
+
+.description h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+/*css do formulario de contato*/
+
+
+footer {
+  background-color: var(--pattern-color);
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly; /*mesmo espaço antes dos itens marginais e entre todos os itens*/
+  padding: 1rem;
+  box-shadow: 0px 2px 16px hsla(220, 32%, 8%, .3);
+}
+
+footer ul {
+  list-style-type: none;
+}
+.contact-form { /*se o background fosse no seletor com container, ia aplicar o max-width que iria deixar sobra de background em zooms menores*/
+  background: #bab98a;
+background: linear-gradient(80deg, rgba(186, 185, 138, 1) 4%, rgba(182, 182, 167, 1) 29%, rgba(181, 181, 176, 1) 50%, rgba(255, 255, 255, 1) 100%);
+}
+/* html {
+  font-size: 62.5%;
+} */
+body {
+    font-family: "Montserrat", sans-serif;
+}
+:root {
+    --signature-color: #345334;
+    --default-radius: 30px;
+}
+.contact-form .container { /*a classe container permite a seletividade necessaria ao seletor para separar a area de icones do formulario*/
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2rem;
+  padding: 4rem 0;
+  margin-bottom: 1.5rem;
+  /* margin: 2rem 0; apenas na vertical. deixa pequeno vazamento no background em cima e embaixo */
+}
+.social-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+/* .media-buttons {}  seletor invalido pq aplicaria o mesmo fundo acoplado aos 3 botões*/
+.social-media h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+.media-buttons {
+  display: flex; /*necessario pra ativar gap*/
+  flex-direction: row;
+  gap: 20px;
+}
+.media-buttons .icon-links {
+    text-decoration: none;
+} /*colocar tag A nesse seletor desativa ele pq fica redundante*/
+.media-buttons a i:hover {
+  transition: all .375s;
+  color: var(--signature-color);
+  background-color: white;
+}
+.ig i:hover {
+  color: #d6249f; /* Fallback color */
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );;
+}
+.linkedin i:hover {
+  color: #5695e3;
+}
+
+.social-media i {
+  color: #fff;
+  background-color: var(--signature-color);
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+}
+/*estilos lado direito (formulario)*/
+.container .form-box {
+  background-color: whitesmoke;
+  border: 3px solid var(--signature-color);
+}
+.form-box {
+  background-color: var(--white-color);
+  color: black;
+  padding: 4rem;
+  border-radius: 30px;
+  box-shadow: 4px 8px 28px 3px rgba(0,0,0,0.7);
+  border: 2px solid wheat;
+  /* animation: ; */
+}
+.form-box label {
+  color: black;
+  font-weight: 700;
+  display: block;
+  margin-bottom: .5rem; /*afasta do input*/
+}
+.form-group input {
+  margin-bottom: 3rem;
+  border-radius: 40px;
+  padding: 1rem;
+  margin-top: .2rem;
+  background-color: wheat;
+  border: 1px solid black;
+}
+.form-box input::placeholder {
+  color: grey;
+  font-weight: bold;
+  font-style: italic;
+}
+/* .form-box input:focus {
+editar esse seletor
+} */
+.form-box .form-group {
+  display: flex;
+  flex-direction: column; /*combado com o display flex deixa um ao lado do outro */
+  /* flex: 1; */
+}
+.form-group .select-btn {
+  background-color: sandybrown;
+  padding: 1rem;
+  border-radius: calc(var(--default-radius) - 20px);
+  border: 2px solid red;
+
+}
+.select-btn #selectedOption {
+  font-weight: bold;
+  color: black;
+  font-style: italic;
+  padding: 2rem;
+}
+.form-group .select-btn:hover {
+  background-color: black;
+  transition: all .375s ease-in-out;
+}
+#selectedOption:hover {
+  color: sandybrown;
+}
+
+ .form-row {
+  display: flex;
+  gap: 1rem;
+ }
+.form-row .form-group {
+  display: flex;
+}
+.contact-form iframe {
+    width: 100%;
+}
+.submit-btn {
+  width: 100%;
+  border-radius: 30px;
+  background-color: wheat;
+  padding: 1rem;
+  color: black;
+  font-weight: bold;
+  border: 2px solid grey;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+.submit-btn:hover {
+  color: wheat;
+  background-color: black;
+  transition: all .375s;
+  transform: scale(1.1);
+}
+.map-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.map-area h2 {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+.footer-logo img {
+  /*apenas a classe não funciona*/
+  height: 4rem;
+  margin-left: 4rem;
+}
+/*parte da direita (formulario): */
+.form-box {
+  border: 3px solid grey;
+  padding: 4rem;
+  background-color: white;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

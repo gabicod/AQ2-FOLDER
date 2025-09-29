@@ -1,0 +1,51 @@
+usar o azul vivo para a seção de portfolio
+ --primary: #2B4C8C;  
+
+ usar o cinza medio abaixo para textos
+   --neutral-dark: #2C3E50;
+   navbar em cor #F8F9FA e backgrounds gerais assim:   --neutral-light: #ECF0F1 ou #ecf0f189
+
+   OFF-WHITE: #F1F2F6
+   cinza médio: #57606f
+   cinza-carbono: #2F3542
+   ---------------ICONES------------------
+   <i class="ri-hotel-line"></i> ICONE DE CONSTRUÇÃO
+   <i class="ri-folder-2-line"></i> ICONE DE ARQUIVO (para seção portfolio)
+   <i class="ri-multi-image-line"></i> para seção galeria
+   <i class="ri-id-card-line"></i> seção sobre
+   <i class="ri-information-2-line"></i> sobre/informações...
+
+<i class="ri-message-2-line"></i> icone para encaixar de alguma maneira no formulario
+
+<i class="ri-fire-line"></i> icone para combate a incendio
+<i class="ri-drop-line"></i> icone instalacao hidraulica
+<i class="ri-draft-line"></i>  projeto arquitetonico
+
+<i class="ri-store-3-line"></i> projeto comercial
+<i class="ri-home-8-line"></i> projeto residencial
+
+
+CONST = tipo usado por padrão em js (não admite reatribuição. tem escopo de bloco - limitado em função ou estrutura de controle). 
+ let apenas quando um valor precisa se rmodificado. 
+let tem escopo de bloco (limitada a uma função, loop, if)
+objetos e arrays constantes = conteúdo interno modificado, mas o array como um todo não pode ser atribuido a um outro array.
+
+document.getElementById e querySelectorAll = manipulação do DOM.
+selectBtn = id para o botão que abre e fecha o dropdown
+selectOptions = a caixa que terá todas as opções ocultas. 
+selectedOption = o texto DENTRO DO BOTÃO.
+options (lista de alternativas quando baixa o dropdown)
+
+getElementById 
+querySelectorAll pega todos os elementos que satisfazem o criterio (possuir dado id ou classe). o selector comum pega apenas O PRIMEIRO que o possui.
+
+addEventListener = escutar a ação em aspas simples - O CLICK.
+() => {} jeito moderno de criar função.
+classList ligado a constante do botão inteiro. 
+classList.toggle = tira a classe no CSS se ela está presente (e vice-versa se ela não está presente; PARÂMETROS ACTIVE E SHOW).
+essa alternância é definida pelo TOGGLE (fecha e abre conforme clique.)
+
+selectedOption.textContent = option.textContent
+classList.remove vai fechar assim que o evento ouvido (clique) acima acontecer. 
+
+let 
