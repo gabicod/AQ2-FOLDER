@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --header-height: 3.5rem;
+
+    --black-color: hsl(220, 24%, 12%);
+    --black-color-light: #1c222e;
+    --black-color-lighten: hsl(220, 20%, 18%);
+    --white-color: #fff;
+    --body-color: hsl(220, 100%, 97%);
+
+
+    /* colors aq2 */
+    --signature-color: #3B613B;
+    --pattern-color: #DED2C1;
+
+    --normal-font-size: .95rem;
+    --font-semi-bold: 600;
+    --z-fixed: 100;
+
+    /*WIDTH BREAKPOINTS: */
+    --tablet-break: 992px;
+    --smartphone-break: 37.5em;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--pattern-color);
+    box-shadow: 0px 2px 16px hsla(220, 32%, 8%, .3);
+    z-index: var(--z-fixed);
+    padding: .7rem;
+}
+
+.nav-menu i {
+    /*o que aparece no dropdown*/
+    color: var(--body-color);
+}
+
+.nav {
+    height: var(--header-height);
+}
+
+.nav-data {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: inline-flex;
+    align-items: center;
+    column-gap: .25rem;
+    font-weight: var(--font-semi-bold);
+    color: var(--white-color);
+}
+
+.nav-toggle {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+.nav-burger,
+.nav-close {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.nav-close {
+    opacity: 0;
+}
+
+/* Menu mobile */
+@media screen and (max-width: 1118px) {
+    .nav-menu {
+        position: absolute;
+        left: 0;
+        top: 2.5rem;
+        width: 100%;
+        background-color: var(--black-color);
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .nav-list {
+        padding-top: 1rem;
+    }
+}
+
+.nav-link {
+    color: var(--black-color);
+    font-weight: var(--font-semi-bold);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color .3s;
+}
+
+.dropdown-item .nav-link i {
+    margin-left: 5px;
+    color: var(--signature-color);
+}
+
+.nav-link:hover {
+    background-color: var(--black-color-light);
+}
+
+.show-menu {
+    opacity: 1;
+    pointer-events: initial;
+}
+
+.show-icon .nav-burger {
+    opacity: 0;
+}
+
+.show-icon .nav-close {
+    opacity: 1;
+}
+
+/* Dropdown */
+.dropdown-item,
+.dropdown-subitem {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-arrow {
+    transition: transform .3s;
+}
+
+.dropdown-item:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-link,
+.dropdown-sublink {
+    padding: 1rem 1.25rem 1rem 2rem;
+    color: var(--white-color);
+    background-color: var(--black-color-light);
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    font-weight: var(--font-semi-bold);
+    transition: background-color .3s;
+}
+
+.dropdown-link:hover,
+.dropdown-sublink:hover {
+    background-color: var(--black-color);
+}
+
+.dropdown-menu,
+.dropdown-submenu {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s, top .3s, left .3s;
+}
+
+/* Desktop dropdown */
+@media screen and (min-width: 1118px) {
+    .nav {
+        height: calc(var(--header-height) + 1.5rem);
+        display: flex;
+        justify-content: space-evenly;
+        /*evenly deixa os icones mais proximos e mais centralizados*/
+        align-items: center;
+    }
+
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav-list {
+        display: flex;
+        column-gap: 2rem;
+    }
+
+    .nav-link {
+        padding: 0;
+        background: none;
+    }
+
+    .nav-link:hover {
+        background: none;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--black-color);
+    }
+
+    .dropdown-submenu {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        background-color: var(--black-color);
+    }
+
+    /* Mostrar menus */
+    .dropdown-item:hover>.dropdown-menu {
+        opacity: 1;
+        pointer-events: initial;
+    }
+
+    .dropdown-subitem:hover>.dropdown-submenu {
+        opacity: 1;
+        pointer-events: initial;
+    }
+}
+
+/*FINAL ADJUSTMENTS*/
+/* Container com espaçamento lateral */
+.container {
+    max-width: 1500px;
+    margin-inline: auto;
+    /* centraliza no desktop */
+    padding-inline: 2rem;
+    width: 100%;
+    /* afasta da borda em todas as telas */
+}
+
+/* Ícones do toggle sempre brancos */
+.nav-burger,
+.nav-close {
+    color: var(--white-color);
+}
+
+/* diminuindo espaçamento menor em telas pequenas*/
+@media screen and (max-width: 768px) {
+    .container {
+        padding-inline: 1rem;
+    }
+}
+
+.nav-logo img {
+    /*substituindo a imagem pelo site*/
+    display: block;
+    max-height: 70px;
+}
+
+
+
+/*CSS DO RESTO DO SITE: */
+main {
+    /* max-width: 30rem; */
+    width: 100%;
+    background: #bab98a;
+    background: linear-gradient(80deg, rgba(186, 185, 138, 1) 4%, rgba(182, 182, 167, 1) 29%, rgba(181, 181, 176, 1) 50%, rgba(255, 255, 255, 1) 100%);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    /*espaçamento entre os articles*/
+    gap: 0;
+    justify-content: center;
+    margin: 0 auto;
+    /*evita quebras inesperadas*/
+}
+
+.portfolio-pics {
+    width: 50%; /*o que garante dois por linha*/
+    padding: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 10rem;
+}
+.main-content-container img,
+.main-content-container p {
+   /*adicionar um tamanho maximo para cada article em telas maiores */
+}
+
+.port-summary {
+    /* margin-top: 6rem; empurra o background do main para baixo junto, deixando um vão branco entre ele e a navbar*/
+}
+
+.descricao-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    gap: 1rem;
+    /*entre titulo e texto*/
+}
+
+.inst-hidraulica {
+    margin-top: 4rem;
+}
+
+.main-content-container {
+    display: flex;
+    flex-direction: row;
+    /*default de telas maiores*/
+    gap: 0;
+    margin-top: 1rem;
+    /* margin-left: 3rem; */
+    padding: 1rem;
+}
+
+.main-content-container img {
+    width: 100%;
+    height: auto;
+}
+
+.main-content-container p {
+    text-align: center;
+    font-weight: 500;
+    background-color: var(--pattern-color);
+    color: var(--black-color-light);
+    padding: 1rem;
+}
+
+.descricao-section h3 {
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.descricao-section p {
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+
+@media screen and (max-width: 768px) {
+
+    /*direção de colunas (empilhados), com uma por linha*/
+    .portfolio-pics {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        /*faz com que seja um article por linha*/
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .main-content-container {
+        width: 100%;
+        /*mexe no tamanho de cada article, nao em sua disposicao*/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-content-container img {
+        width: 50%;
+        /*nao deixa sobras do texto */
+        height: auto;
+        max-width: 300px; /*mesmo tamanho maximo do paragrafo*/
+    }
+
+    .portfolio-pics p {
+        width: 50%; /*complementa os 50% da imagem*/
+        max-width: 300px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .portfolio-pics {
+        width: 100%;
+        /*um por linha*/
+        margin: 1rem auto;
+        display: flex;
+        justify-content: center; /*centraliza os articles*/
+    }
+
+    .main-content-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-content-container img {
+        width: 50%;
+        height: auto;
+    }
+
+    .main-content-container p {
+        height: 100%;
+        text-align: center;
+        align-self: center;
+    }
+}
